@@ -53,7 +53,7 @@
                         class="rounded-2xl border border-gray-200 shadow-sm"
                         :style="`padding:${margin}px; background:${bg};`"
                     >
-                        <div id="qr-canvas-target" class="min-h-64 min-w-64 flex items-center justify-center">
+                        <div id="qr-canvas-target" style="min-height:256px; min-width:256px; display:flex; align-items:center; justify-content:center;">
                             <div class="text-xs text-gray-500 text-center px-4" x-show="!urlValid" x-cloak>
                                 Enter a valid URL to generate a QR code.
                             </div>
