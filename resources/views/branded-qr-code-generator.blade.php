@@ -30,8 +30,9 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_380px] gap-6">
-        <div class="space-y-4 lg:sticky lg:top-6 lg:self-start order-1">
+    {{-- Use standard Tailwind utilities only (no arbitrary values). Production vite builds often scan ./resources/views but not vendor packages, so JIT would omit classes only referenced from the Composer package. --}}
+    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+        <div class="w-full min-w-0 space-y-4 lg:flex-1 lg:sticky lg:top-6 order-1">
             <div class="bg-white border border-gray-200 rounded-2xl p-5">
                 <div class="flex items-center justify-between mb-4">
                     <div class="text-sm font-semibold text-gray-800">Preview</div>
@@ -52,7 +53,7 @@
                         class="rounded-2xl border border-gray-200 shadow-sm"
                         :style="`padding:${margin}px; background:${bg};`"
                     >
-                        <div id="qr-canvas-target" class="min-h-[256px] min-w-[256px] flex items-center justify-center">
+                        <div id="qr-canvas-target" class="min-h-64 min-w-64 flex items-center justify-center">
                             <div class="text-xs text-gray-500 text-center px-4" x-show="!urlValid" x-cloak>
                                 Enter a valid URL to generate a QR code.
                             </div>
@@ -64,7 +65,7 @@
             </div>
         </div>
 
-        <div class="space-y-5 order-2">
+        <div class="w-full min-w-0 space-y-5 lg:w-96 lg:flex-shrink-0 order-2">
             <div class="bg-white border border-gray-200 rounded-2xl p-5 space-y-5">
                 <div>
                     <div class="text-sm font-semibold text-gray-800 mb-3">Theme</div>
@@ -84,16 +85,16 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Foreground</label>
-                        <div class="flex items-center gap-3">
-                            <input type="color" x-model="fg" @input="activePreset = 'custom'; generate()" class="h-10 w-12 rounded border border-gray-300 bg-white" />
-                            <input type="text" x-model="fg" @input="activePreset = 'custom'; generate()" class="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm font-mono focus:ring-2 focus:ring-primary-500 focus:border-transparent" />
+                        <div class="flex items-center gap-3 min-w-0">
+                            <input type="color" x-model="fg" @input="activePreset = 'custom'; generate()" class="h-10 w-12 shrink-0 rounded border border-gray-300 bg-white" />
+                            <input type="text" x-model="fg" @input="activePreset = 'custom'; generate()" class="min-w-0 flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm font-mono focus:ring-2 focus:ring-primary-500 focus:border-transparent" />
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Background</label>
-                        <div class="flex items-center gap-3">
-                            <input type="color" x-model="bg" @input="activePreset = 'custom'; generate()" class="h-10 w-12 rounded border border-gray-300 bg-white" />
-                            <input type="text" x-model="bg" @input="activePreset = 'custom'; generate()" class="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm font-mono focus:ring-2 focus:ring-primary-500 focus:border-transparent" />
+                        <div class="flex items-center gap-3 min-w-0">
+                            <input type="color" x-model="bg" @input="activePreset = 'custom'; generate()" class="h-10 w-12 shrink-0 rounded border border-gray-300 bg-white" />
+                            <input type="text" x-model="bg" @input="activePreset = 'custom'; generate()" class="min-w-0 flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm font-mono focus:ring-2 focus:ring-primary-500 focus:border-transparent" />
                         </div>
                     </div>
                 </div>
