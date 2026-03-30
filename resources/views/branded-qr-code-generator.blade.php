@@ -32,40 +32,7 @@
 
     {{-- Use standard Tailwind utilities only (no arbitrary values). Production vite builds often scan ./resources/views but not vendor packages, so JIT would omit classes only referenced from the Composer package. --}}
     <div class="flex flex-col lg:flex-row lg:items-start gap-6">
-        <div class="w-full min-w-0 space-y-4 lg:flex-1 lg:sticky lg:top-6 order-1">
-            <div class="bg-white border border-gray-200 rounded-2xl p-5">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="text-sm font-semibold text-gray-800">Preview</div>
-                    <button
-                        type="button"
-                        class="inline-flex items-center justify-center h-10 px-4 rounded-lg bg-primary-600 text-white text-sm font-semibold hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed"
-                        :disabled="!urlValid"
-                        @click="downloadPng()"
-                    >
-                        Download PNG
-                    </button>
-                </div>
-
-                <div class="flex flex-col items-center gap-3">
-                    <div class="text-sm font-semibold text-gray-900 text-center" x-show="labelPosition === 'above' && label.trim().length > 0" x-text="label" x-cloak></div>
-
-                    <div
-                        class="rounded-2xl border border-gray-200 shadow-sm"
-                        :style="`padding:${margin}px; background:${bg};`"
-                    >
-                        <div id="qr-canvas-target" style="min-height:256px; min-width:256px; display:flex; align-items:center; justify-content:center;">
-                            <div class="text-xs text-gray-500 text-center px-4" x-show="!urlValid" x-cloak>
-                                Enter a valid URL to generate a QR code.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-sm font-semibold text-gray-900 text-center" x-show="labelPosition === 'below' && label.trim().length > 0" x-text="label" x-cloak></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="w-full min-w-0 space-y-5 lg:w-96 lg:flex-shrink-0 order-2">
+        <div class="w-full min-w-0 space-y-5 lg:w-96 lg:flex-shrink-0 order-1">
             <div class="bg-white border border-gray-200 rounded-2xl p-5 space-y-5">
                 <div>
                     <div class="text-sm font-semibold text-gray-800 mb-3">Theme</div>
@@ -184,6 +151,41 @@
                 >
                     Reset to defaults
                 </button>
+            </div>
+        </div>
+
+        {{-- Preview column (right, flex-1) --}}
+        <div class="w-full min-w-0 space-y-4 lg:flex-1 lg:sticky lg:top-6 order-2">
+            <div class="bg-white border border-gray-200 rounded-2xl p-5">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="text-sm font-semibold text-gray-800">Preview</div>
+                    <button
+                        type="button"
+                        class="inline-flex items-center justify-center h-10 px-4 rounded-lg bg-primary-600 text-white text-sm font-semibold hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                        :disabled="!urlValid"
+                        @click="downloadPng()"
+                    >
+                        Download PNG
+                    </button>
+                </div>
+
+                <div class="flex flex-col items-center gap-3" style="overflow:hidden;">
+                    <div class="text-sm font-semibold text-gray-900 text-center" x-show="labelPosition === 'above' && label.trim().length > 0" x-text="label" x-cloak></div>
+
+                    <div
+                        class="rounded-2xl border border-gray-200 shadow-sm"
+                        style="overflow:hidden; max-width:100%;"
+                        :style="`padding:${margin}px; background:${bg};`"
+                    >
+                        <div id="qr-canvas-target" style="min-height:256px; min-width:256px; display:flex; align-items:center; justify-content:center; overflow:hidden; max-width:100%;">
+                            <div class="text-xs text-gray-500 text-center px-4" x-show="!urlValid" x-cloak>
+                                Enter a valid URL to generate a QR code.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-sm font-semibold text-gray-900 text-center" x-show="labelPosition === 'below' && label.trim().length > 0" x-text="label" x-cloak></div>
+                </div>
             </div>
         </div>
     </div>
