@@ -31,8 +31,8 @@
     </div>
 
     {{-- Use standard Tailwind utilities only (no arbitrary values). Production vite builds often scan ./resources/views but not vendor packages, so JIT would omit classes only referenced from the Composer package. --}}
-    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
-        <div class="w-full min-w-0 space-y-5 lg:w-96 lg:flex-shrink-0 order-1">
+    <div class="flex flex-col xl:flex-row xl:items-start gap-6">
+        <div class="w-full min-w-0 space-y-5 xl:w-96 xl:flex-shrink-0 order-1">
             <div class="bg-white border border-gray-200 rounded-2xl p-5 space-y-5">
                 <div>
                     <div class="text-sm font-semibold text-gray-800 mb-3">Theme</div>
@@ -155,7 +155,7 @@
         </div>
 
         {{-- Preview column (right, flex-1) --}}
-        <div class="w-full min-w-0 space-y-4 lg:flex-1 lg:sticky lg:top-6 order-2">
+        <div class="w-full min-w-0 space-y-4 xl:flex-1 xl:sticky xl:top-6 order-2">
             <div class="bg-white border border-gray-200 rounded-2xl p-5">
                 <div class="flex items-center justify-between mb-4">
                     <div class="text-sm font-semibold text-gray-800">Preview</div>
@@ -174,10 +174,10 @@
 
                     <div
                         class="rounded-2xl border border-gray-200 shadow-sm"
-                        style="overflow:hidden; max-width:100%;"
+                        style="display:inline-block; max-width:100%;"
                         :style="`padding:${margin}px; background:${bg};`"
                     >
-                        <div id="qr-canvas-target" style="min-height:256px; min-width:256px; display:flex; align-items:center; justify-content:center; overflow:hidden; max-width:100%;">
+                        <div id="qr-canvas-target" style="min-height:256px; min-width:256px; display:flex; align-items:center; justify-content:center;">
                             <div class="text-xs text-gray-500 text-center px-4" x-show="!urlValid" x-cloak>
                                 Enter a valid URL to generate a QR code.
                             </div>
